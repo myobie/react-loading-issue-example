@@ -1,28 +1,20 @@
-# Brunch + Babel/ES6
+# Example repo showing the react loading issue
 
-This is a modern JS skeleton for [Brunch](http://brunch.io).
+## Steps to create this repo
 
-## Installation
+```sh
+$ brunch new proj -s es6
+$ cd proj
+$ npm i auth0-lock --save
+# edit app/main.js to import auth0-lock and wire it up to a button
+# edit app/assets/index.html to require('main.js') to run the code in main.js
+$ npm start
+```
 
-Clone this repo manually or use `brunch new dir -s brunch/with-es6`
+## Error
 
-## Getting started
+```
+require — vendor.js:62:84Error: Cannot find module 'react-dom/lib/ReactPerf' from 'react/lib/ReactAddonsDOMDependencies.js'
+```
 
-* Install (if you don't have them):
-    * [Node.js](http://nodejs.org): `brew install node` on OS X
-    * [Brunch](http://brunch.io): `npm install -g brunch`
-    * Brunch plugins and app dependencies: `npm install`
-* Run:
-    * `brunch watch --server` — watches the project with continuous rebuild. This will also launch HTTP server with [pushState](https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history).
-    * `brunch build --production` — builds minified project for production
-* Learn:
-    * `public/` dir is fully auto-generated and served by HTTP server.  Write your code in `app/` dir.
-    * Place static files you want to be copied from `app/assets/` to `public/`.
-    * [Brunch site](http://brunch.io), [Getting started guide](https://github.com/brunch/brunch-guide#readme)
-
-## ES7
-
-To use proposed JS features not included into ES6, do this:
-
-* `npm install --save-dev babel-preset-stage-0`
-* in `brunch-config.js`, add the preset: `presets: ['es2015', 'stage-0']`
+See issue <https://github.com/facebook/react/issues/8314>
